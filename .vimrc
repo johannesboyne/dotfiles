@@ -57,9 +57,12 @@ set laststatus=2
 set nu
 set runtimepath^=~/.vim/bundle/node
 set smartindent
+set smarttab
 set tabstop=4
 set shiftwidth=4
 set expandtab
+let g:ctrlp_working_path_mode = 'c'
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " projects
 command CCP CtrlP ~/Developing_Zwtg/cc/FILIALE3.0/cockpit/src/Shopmacher/App/PagesBundle/Resources/public/js/pageeditor/
