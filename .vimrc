@@ -46,9 +46,9 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'pangloss/vim-javascript'
 Bundle 'walm/jshint.vim'
 
+let mapleader = ","
+
 colorscheme busybee
-" colorscheme camo
-" colorscheme kellys
 " colorscheme railscasts
 filetype plugin indent on     " required!
 syntax on
@@ -58,14 +58,41 @@ set nu
 set runtimepath^=~/.vim/bundle/node
 set smartindent
 set smarttab
-set tabstop=4
-set shiftwidth=4
+"set tabstop=4
+"set shiftwidth=4
 set expandtab
 let g:ctrlp_working_path_mode = 'c'
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
+set cursorline
+hi CursorLine cterm=none
+
+" Highlight search results
+set hlsearch
+" Invisible characters
+autocmd BufEnter * set listchars=tab:▸\ ,eol:¬
+
+"Clipboard Access
+set clipboard=unnamed
+
+" ------------------------------------------------------------------------------
+" Tabs vs. Spaces
+" ------------------------------------------------------------------------------
+" Spaces instead of tabs
+set expandtab
+" 2 spaces for each tab
+set tabstop=2
+" 2 spaces for indention
+set shiftwidth=2
+
+" CtrlP
+nmap <Leader>p :CtrlPMRU<CR>
+
+" Clear search results when hitting space
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
 " projects
-command CCP CtrlP ~/Developing_Zwtg/cc/FILIALE3.0/cockpit/src/Shopmacher/App/PagesBundle/Resources/public/js/pageeditor/
+" command CCP CtrlP ~/Developing_Zwtg/cc/FILIALE3.0/cockpit/src/Shopmacher/App/PagesBundle/Resources/public/js/pageeditor/
 
 "
 " " Brief help
@@ -75,4 +102,3 @@ command CCP CtrlP ~/Developing_Zwtg/cc/FILIALE3.0/cockpit/src/Shopmacher/App/Pag
 " " :BundleClean(!)      - confirm (or auto-approve) removal of unused bundles
 " "
 " " see :h vundle for more details or wiki for FAQ
-" " NOTE: comments after Bundle commands are not allowed.
