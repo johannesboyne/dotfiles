@@ -46,6 +46,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'pangloss/vim-javascript'
 "Bundle 'walm/jshint.vim'
 Bundle 'sleistner/vim-jshint'
+Bundle 'bling/vim-bufferline'
 
 let mapleader = ","
 
@@ -96,6 +97,24 @@ nmap <Leader>p :CtrlPMRU<CR>
 
 " Clear search results when hitting space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" Airlin Buffers
+let g:bufferline_echo = 0
+nnoremap <Leader>l :ls<CR>
+nnoremap <Leader>b :bp<CR>
+nnoremap <Leader>f :bn<CR>
+nnoremap <Leader>g :e#<CR>
+nnoremap <Leader>wb :Bclose<CR>
+nnoremap <Leader>1 :1b<CR>
+nnoremap <Leader>2 :2b<CR>
+nnoremap <Leader>3 :3b<CR>
+nnoremap <Leader>4 :4b<CR>
+nnoremap <Leader>5 :5b<CR>
+nnoremap <Leader>6 :6b<CR>
+nnoremap <Leader>7 :7b<CR>
+nnoremap <Leader>8 :8b<CR>
+nnoremap <Leader>9 :9b<CR>
+nnoremap <Leader>0 :10b<CR>
 
 " projects
 " command CCP CtrlP ~/Developing_Zwtg/cc/FILIALE3.0/cockpit/src/Shopmacher/App/PagesBundle/Resources/public/js/pageeditor/
