@@ -44,7 +44,8 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'pangloss/vim-javascript'
-Bundle 'walm/jshint.vim'
+"Bundle 'walm/jshint.vim'
+Bundle 'sleistner/vim-jshint'
 
 let mapleader = ","
 
@@ -74,6 +75,11 @@ autocmd BufEnter * set listchars=tab:▸\ ,eol:¬
 
 "Clipboard Access
 set clipboard=unnamed
+
+" Do not create swap files, we're using git after all
+set nobackup
+set nowritebackup
+set noswapfile
 
 " ------------------------------------------------------------------------------
 " Tabs vs. Spaces
