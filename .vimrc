@@ -60,14 +60,16 @@ set nu
 set runtimepath^=~/.vim/bundle/node
 set smartindent
 set smarttab
+set mouse=a
 "set tabstop=4
 "set shiftwidth=4
 set expandtab
 let g:ctrlp_working_path_mode = 'c'
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-set cursorline
-hi CursorLine cterm=none
+set nocursorcolumn
+set nocursorline
+syntax sync minlines=256
 
 " Highlight search results
 set hlsearch
