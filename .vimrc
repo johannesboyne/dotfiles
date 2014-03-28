@@ -64,7 +64,7 @@ set mouse=a
 "set tabstop=4
 "set shiftwidth=4
 set expandtab
-let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_working_path_mode = 'rc'
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 set nocursorcolumn
