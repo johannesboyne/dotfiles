@@ -61,6 +61,7 @@ set runtimepath^=~/.vim/bundle/node
 set smartindent
 set smarttab
 set mouse=a
+set encoding=utf-8
 "set tabstop=4
 "set shiftwidth=4
 set expandtab
