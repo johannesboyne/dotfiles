@@ -7,6 +7,9 @@ alias addjspe='git add cockpit/src/Shopmacher/App/PageEditorBundle/Resources/pub
 alias tig='/Users/jb/bin/tig'
 alias disable_spotlight='sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist'
 alias reenable_spotlight='sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist'
+alias vu='vagrant up'
+alias vs='vagrant ssh'
+alias vus='vagrant up && vagrant ssh'
 
 ulimit -n 1024
 
