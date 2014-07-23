@@ -11,6 +11,13 @@ alias vu='vagrant up'
 alias vs='vagrant ssh'
 alias vus='vagrant up && vagrant ssh'
 
+# Manta
+export MANTA_URL=https://us-east.manta.joyent.com
+export MANTA_USER=johannesboyne
+export MANTA_KEY_ID=d2:2d:ca:f8:d4:e8:25:8e:4f:21:43:dd:f8:0f:fa:08
+
+export PATH=/Users/jb/Developing/mongodb-local-installation/bin:$PATH
+
 ulimit -n 1024
 
 # Set name of the theme to load.
@@ -52,7 +59,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -63,6 +70,8 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bi
 export PATH="/usr/local/heroku/bin:$PATH"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+export PATH="$PATH:/Users/jb/Developing/elixir/bin"
 
 #ssh keys
 #ssh-add ~/.ssh/id_rsa_zwtg &>/dev/null
