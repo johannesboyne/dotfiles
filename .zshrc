@@ -16,7 +16,11 @@ export MANTA_URL=https://us-east.manta.joyent.com
 export MANTA_USER=johannesboyne
 export MANTA_KEY_ID=d2:2d:ca:f8:d4:e8:25:8e:4f:21:43:dd:f8:0f:fa:08
 
+export GOROOT=/usr/local/go
 export PATH=/Users/jb/Developing/mongodb-local-installation/bin:$PATH
+export PATH=/Users/jb/.local/bin:$PATH
+export GOPATH=/Users/jb/Developing/externalgocode/
+export PATH=/Users/jb/Developing/externalgocode/:$PATH
 
 ulimit -n 1024
 
@@ -72,6 +76,8 @@ export PATH="/usr/local/heroku/bin:$PATH"
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export PATH="$PATH:/Users/jb/Developing/elixir/bin"
+
+export GOPATH=/Users/jb/Developing/externalgocode/
 
 #ssh keys
 #ssh-add ~/.ssh/id_rsa_zwtg &>/dev/null

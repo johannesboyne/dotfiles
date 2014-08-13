@@ -49,6 +49,8 @@ Bundle 'wavded/vim-stylus'
 "Bundle 'walm/jshint.vim'
 "Bundle 'sleistner/vim-jshint'
 Bundle 'bling/vim-bufferline'
+Bundle 'fatih/vim-go'
+Bundle 'Blackrush/vim-gocode'
 
 let mapleader = ","
 
