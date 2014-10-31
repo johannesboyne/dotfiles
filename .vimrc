@@ -1,3 +1,4 @@
+set t_Co=256
 set nocompatible              " be iMproved
 filetype off                  " required!
 
@@ -104,6 +105,12 @@ nmap <Leader>p :CtrlPMRU<CR>
 
 " Clear search results when hitting space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" Spell Checker
+let s:cpo_save = &cpo
+set cpo&vim
+syn spell toplevel
+set spell spelllang=en_us
 
 " Airlin Buffers
 let g:bufferline_echo = 0
