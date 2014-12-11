@@ -52,6 +52,8 @@ Bundle 'wavded/vim-stylus'
 Bundle 'bling/vim-bufferline'
 Bundle 'fatih/vim-go'
 Bundle 'Blackrush/vim-gocode'
+Bundle 'benmills/vimux'
+Bundle 'slim-template/vim-slim'
 
 let mapleader = ","
 
@@ -130,14 +132,23 @@ nnoremap <Leader>8 :8b<CR>
 nnoremap <Leader>9 :9b<CR>
 nnoremap <Leader>0 :10b<CR>
 
-" projects
-" command CCP CtrlP ~/Developing_Zwtg/cc/FILIALE3.0/cockpit/src/Shopmacher/App/PagesBundle/Resources/public/js/pageeditor/
+" rerun fig
+map <Leader>dr :call VimuxRunCommand("fig up")<CR>
+map <Leader>dt :VimuxInterruptRunner<CR>
 
-"
+" set / unset language spelling
+map <Leader>se :set spell spelllang=en_us<CR>
+map <Leader>sd :set spell spelllang=<CR>
+
+" color column
+:set colorcolumn=+1        " highlight column after 'textwidth'
+:set colorcolumn=+1,+2,+3  " highlight three columns after 'textwidth'
+:highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
+:set colorcolumn=80
+
 " " Brief help
 " " :BundleList          - list configured bundles
 " " :BundleInstall(!)    - install (update) bundles
 " " :BundleSearch(!) foo - search (or refresh cache first) for foo
 " " :BundleClean(!)      - confirm (or auto-approve) removal of unused bundles
-" "
 " " see :h vundle for more details or wiki for FAQ
