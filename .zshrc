@@ -10,17 +10,34 @@ alias reenable_spotlight='sudo launchctl load -w /System/Library/LaunchDaemons/c
 alias vu='vagrant up'
 alias vs='vagrant ssh'
 alias vus='vagrant up && vagrant ssh'
+alias tmuxs='tmux new-session -s shared'
+alias tmuxa='tmux attach-session -t shared'
 
 # Manta
 export MANTA_URL=https://us-east.manta.joyent.com
 export MANTA_USER=johannesboyne
 export MANTA_KEY_ID=d2:2d:ca:f8:d4:e8:25:8e:4f:21:43:dd:f8:0f:fa:08
 
+function manta {
+  local alg=rsa-sha256
+  local keyId=/$MANTA_USER/keys/$MANTA_KEY_ID
+  now=$(date -u "+%a, %d %h %Y %H:%M:%S GMT")
+  local sig=$(echo "date:" $now | \
+    tr -d '\n' | \
+    openssl dgst -sha256 -sign $HOME/.ssh/mantatest_id_rsa | \
+    openssl enc -e -a | tr -d '\n')
+
+  curl -sS $MANTA_URL"$@" -H "date: $now"  \
+    -H "Authorization: Signature keyId=\"$keyId\",algorithm=\"$alg\",signature=\"$sig\""
+}
+
 export GOROOT=/usr/local/go
 export PATH=/Users/jb/Developing/mongodb-local-installation/bin:$PATH
 export PATH=/Users/jb/.local/bin:$PATH
+export PATH=/usr/local/packer:$PATH
 export GOPATH=/Users/jb/Developing/externalgocode/
 export PATH=/Users/jb/Developing/externalgocode/:$PATH
+export PATH="/usr/local/git/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:$PATH"
 
 ulimit -n 1024
 
@@ -29,6 +46,11 @@ ulimit -n 1024
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
+
+# Docker
+export DOCKER_CERT_PATH=/Users/jb/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+export DOCKER_HOST=tcp://192.168.59.103:2376
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
