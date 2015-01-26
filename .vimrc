@@ -2,6 +2,9 @@ set t_Co=256
 set nocompatible              " be iMproved
 filetype off                  " required!
 
+set relativenumber
+set number
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -54,6 +57,7 @@ Bundle 'fatih/vim-go'
 Bundle 'Blackrush/vim-gocode'
 Bundle 'benmills/vimux'
 Bundle 'slim-template/vim-slim'
+Bundle 'git://github.com/mhinz/vim-startify.git'
 
 let mapleader = ","
 
@@ -75,8 +79,18 @@ set expandtab
 let g:ctrlp_working_path_mode = 'rc'
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-set nocursorcolumn
-set nocursorline
+"set nocursorcolumn
+"set nocursorline
+" ser cursorlines
+
+hi CursorLine   guibg=#303030 gui=none ctermbg=238 cterm=NONE
+hi CursorColumn guibg=#303030 gui=none ctermbg=238 cterm=NONE
+
+:nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+
+set cursorcolumn
+set cursorline
+
 syntax sync minlines=256
 
 " Highlight search results
@@ -134,6 +148,7 @@ nnoremap <Leader>0 :10b<CR>
 
 " rerun fig
 map <Leader>dr :call VimuxRunCommand("fig up")<CR>
+map <Leader>rr :call VimuxRunCommand("fig run app rspec")<CR>
 map <Leader>dt :VimuxInterruptRunner<CR>
 
 " set / unset language spelling
@@ -145,6 +160,19 @@ map <Leader>sd :set spell spelllang=<CR>
 :set colorcolumn=+1,+2,+3  " highlight three columns after 'textwidth'
 :highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
 :set colorcolumn=80
+
+let g:startify_custom_header = [
+      \ '     /\__\         /\__\          ___        |\__\    ', 
+      \ '    /:/  /        /::|  |        /\  \       |:|  |   ', 
+      \ '   /:/  /        /:|:|  |        \:\  \      |:|  |   ', 
+      \ '  /:/  /  ___   /:/|:|  |__      /::\__\     |:|__|__ ', 
+      \ ' /:/__/  /\__\ /:/ |:| /\__\  __/:/\/__/ ____/::::\__\',
+      \ ' \:\  \ /:/  / \/__|:|/:/  / /\/:/  /    \::::/~~/~   ', 
+      \ '  \:\  /:/  /      |:/:/  /  \::/__/      ~~|:|~~|    ', 
+      \ '   \:\/:/  /       |::/  /    \:\__\        |:|  |    ', 
+      \ '    \::/  /        /:/  /      \/__/        |:|  |    ', 
+      \ '     \/__/         \/__/                     \|__|    ',
+      \ ]
 
 " " Brief help
 " " :BundleList          - list configured bundles
