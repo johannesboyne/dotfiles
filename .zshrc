@@ -12,6 +12,7 @@ alias vs='vagrant ssh'
 alias vus='vagrant up && vagrant ssh'
 alias tmuxs='tmux new-session -s shared'
 alias tmuxa='tmux attach-session -t shared'
+alias telegram='open https://web.telegram.org/#/im'
 
 # Manta
 export MANTA_URL=https://us-east.manta.joyent.com
@@ -37,6 +38,7 @@ export PATH=/Users/jb/.local/bin:$PATH
 export PATH=/usr/local/packer:$PATH
 export GOPATH=/Users/jb/Developing/externalgocode/
 export PATH=/Users/jb/Developing/externalgocode/:$PATH
+export PATH=/usr/local/bin:$PATH
 export PATH="/usr/local/git/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:$PATH"
 
 ulimit -n 1024
@@ -100,6 +102,9 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH="$PATH:/Users/jb/Developing/elixir/bin"
 
 export GOPATH=/Users/jb/Developing/externalgocode/
+
+#Terraform
+export PATH="$PATH:/Users/jb/Developing/terraform"
 
 #ssh keys
 #ssh-add ~/.ssh/id_rsa_zwtg &>/dev/null
