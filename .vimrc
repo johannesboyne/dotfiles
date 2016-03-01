@@ -58,10 +58,14 @@ Bundle 'Blackrush/vim-gocode'
 Bundle 'benmills/vimux'
 Bundle 'slim-template/vim-slim'
 Bundle 'git://github.com/mhinz/vim-startify.git'
+Bundle 'mxw/vim-jsx'
+Bundle 'elixir-lang/vim-elixir'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'markcornick/vim-terraform'
 
 let mapleader = ","
 
-colorscheme busybee
+ colorscheme busybee
 " colorscheme railscasts
 filetype plugin indent on     " required!
 syntax on
@@ -154,12 +158,18 @@ map <Leader>dt :VimuxInterruptRunner<CR>
 " set / unset language spelling
 map <Leader>se :set spell spelllang=en_us<CR>
 map <Leader>sd :set spell spelllang=<CR>
+map <F7> :TagbarToggle<CR>
 
 " color column
 :set colorcolumn=+1        " highlight column after 'textwidth'
 :set colorcolumn=+1,+2,+3  " highlight three columns after 'textwidth'
-:highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
+:highlight ColorColumn guibg=#2e2e2e ctermbg=236
 :set colorcolumn=80
+:set list
+:highlight SpecialKey ctermbg=234
+
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+let g:syntastic_javascript_checkers = ['eslint']
 
 let g:startify_custom_header = [
       \ '     /\__\         /\__\          ___        |\__\    ', 
