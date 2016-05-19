@@ -1,6 +1,15 @@
-set t_Co=256
+if has('nvim')
+    let s:editor_root=expand("~/.config/nvim")
+else
+    let s:editor_root=expand("~/.vim")
+endif
+
 set nocompatible              " be iMproved
 filetype off                  " required!
+
+set relativenumber
+set number
+
 "
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -46,7 +55,6 @@ Plugin 'git://github.com/digitaltoad/vim-jade.git'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'pangloss/vim-javascript'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'wavded/vim-stylus'
@@ -60,9 +68,7 @@ Plugin 'slim-template/vim-slim'
 Plugin 'git://github.com/mhinz/vim-startify.git'
 Plugin 'mxw/vim-jsx'
 Plugin 'elixir-lang/vim-elixir'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'markcornick/vim-terraform'
-Plugin 'elixir-lang/vim-elixir'
 Plugin 'thinca/vim-ref'
 Plugin 'archSeer/elixir.nvim'
 " All of your Plugins must be added before the following line
@@ -70,16 +76,19 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 let mapleader = ","
+set backspace=2           " Makes backspace not behave all retarded-like
+set list                  " Show invisible characters
+set showmatch             " Highlight matching braces
+set showmode              " Show the current mode on the open buffer
+set splitbelow            " Splits show up below by default
+set splitright            " Splits go to the right by default
+set t_Co=256
+set fillchars+=vert:\|
 
  colorscheme busybee
-" colorscheme railscasts
 filetype plugin indent on     " required!
 syntax on
 syntax enable
-
-set relativenumber
-set number
-
 set laststatus=2
 set nu
 set runtimepath^=~/.vim/bundle/node
@@ -99,6 +108,7 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 
 hi CursorLine   guibg=#303030 gui=none ctermbg=238 cterm=NONE
 hi CursorColumn guibg=#303030 gui=none ctermbg=238 cterm=NONE
+hi VertSplit ctermfg=238 ctermbg=238 term=NONE
 
 :nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
@@ -140,7 +150,6 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 let s:cpo_save = &cpo
 set cpo&vim
 syn spell toplevel
-set spell spelllang=en_us
 
 " Airlin Buffers
 let g:bufferline_echo = 0
@@ -178,16 +187,22 @@ map <F7> :TagbarToggle<CR>
 :set list
 :highlight SpecialKey ctermbg=234
 
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-let g:syntastic_javascript_checkers = ['eslint']
+" tagbar
 
-let g:startify_custom_header = [
-      \ ' WELCOME JOBO  '
-      \ ]
-
-" " Brief help
-" " :BundleList          - list configured bundles
-" " :BundleInstall(!)    - install (update) bundles
-" " :BundleSearch(!) foo - search (or refresh cache first) for foo
-" " :BundleClean(!)      - confirm (or auto-approve) removal of unused bundles
-" " see :h vundle for more details or wiki for FAQ
+let g:tagbar_type_elixir = {
+    \ 'ctagstype' : 'elixir',
+    \ 'kinds' : [
+        \ 'f:functions',
+        \ 'functions:functions',
+        \ 'c:callbacks',
+        \ 'd:delegates',
+        \ 'e:exceptions',
+        \ 'i:implementations',
+        \ 'a:macros',
+        \ 'o:operators',
+        \ 'm:modules',
+        \ 'p:protocols',
+        \ 'r:records',
+        \ 't:test'
+    \ ]
+\ }

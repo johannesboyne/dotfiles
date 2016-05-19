@@ -12,7 +12,10 @@ alias vs='vagrant ssh'
 alias vus='vagrant up && vagrant ssh'
 alias tmuxs='tmux new-session -s shared'
 alias tmuxa='tmux attach-session -t shared'
-alias telegram='open https://web.telegram.org/#/im'
+alias telegram='open "https://web.telegram.org/#/im"'
+alias whatsapp='open "https://web.whatsapp.com/"'
+alias nvimn='nvim +NERDTree'
+alias nv='nvim +NERDTree'
 
 # Manta
 export MANTA_URL=https://us-east.manta.joyent.com
