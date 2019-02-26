@@ -1,130 +1,84 @@
-if has('nvim')
-    let s:editor_root=expand("/Users/johannes\ boyne/.config/nvim")
-else
-    let s:editor_root=expand("/Users/johannes\ boyne/.vim")
-endif
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
-set nocompatible              " be iMproved
-filetype off                  " required!
+Plug 'junegunn/vim-easy-align'
+Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+Plug 'fatih/vim-go', { 'tag': '*' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug '~/my-prototype-plugin'
+Plug 'bling/vim-airline'
+Plug 'vim-scripts/BusyBee'
+Plug 'rakr/vim-one'
+Plug 'neomake/neomake'
+Plug 'b4b4r07/vim-hcl'
+Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-expand-region'
+Plug 'git://git.wincent.com/command-t.git'
+Plug 'git://github.com/moll/vim-node.git'
+Plug 'udalov/kotlin-vim'
+Plug 'cloudhead/neovim-fuzzy'
+Plug 'pangloss/vim-javascript'
+Plug 'aklt/plantuml-syntax'
 
+" Initialize plugin system
+call plug#end()
+
+set nocompatible
 set relativenumber
 set number
 
-" set the runtime path to include Vundle and initialize
-set rtp+=/Users/johannes\ boyne/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('/Users/johannes\ boyne/some/path/here')
+filetype plugin indent on
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-" " My bundles here:
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'kien/ctrlp.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-scripts/camelcasemotion'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'itspriddle/ZoomWin'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-bundler'
-Plugin 'puppetlabs/puppet-syntax-vim'
-Plugin 'ervandew/supertab'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'godlygeek/tabular'
-Plugin 'scrooloose/syntastic'
-Plugin 'bling/vim-airline'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'terryma/vim-expand-region'
-Plugin 'L9'
-Plugin 'FuzzyFinder'
-Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'git://github.com/moll/vim-node.git'
-Plugin 'git://github.com/digitaltoad/vim-jade.git'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'wavded/vim-stylus'
-"Plugin 'walm/jshint.vim'
-"Plugin 'sleistner/vim-jshint'
-Plugin 'bling/vim-bufferline'
-Plugin 'fatih/vim-go'
-Plugin 'Blackrush/vim-gocode'
-Plugin 'benmills/vimux'
-Plugin 'slim-template/vim-slim'
-Plugin 'git://github.com/mhinz/vim-startify.git'
-Plugin 'mxw/vim-jsx'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'markcornick/vim-terraform'
-Plugin 'thinca/vim-ref'
-Plugin 'archSeer/elixir.nvim'
-Plugin 'rking/ag.vim'
-Plugin 'kylef/apiblueprint.vim'
-Plugin 'cespare/vim-toml'
-Plugin 'neomake/neomake'
-Plugin 'b4b4r07/vim-hcl'
-"Plugin 'sourcegraph/sourcegraph-vim'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'heavenshell/vim-jsdoc'
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
-Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plugin 'zchee/deoplete-go', { 'do': 'make'}
-" Track the engine.
-" Plugin 'SirVer/ultisnips'
-" " Snippets are separated from the engine. Add this if you want them:
-" Plugin 'honza/vim-snippets'
-Plugin 'isRuslan/vim-es6'
-Plugin 'hdima/python-syntax'
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<Leader><tab>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-"
-"" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-
-let mapleader = ","
-set backspace=2           " Makes backspace not behave all retarded-like
-set list                  " Show invisible characters
-set showmatch             " Highlight matching braces
-set showmode              " Show the current mode on the open buffer
-set splitbelow            " Splits show up below by default
-set splitright            " Splits go to the right by default
+let mapleader=","
+set backspace=2
+set list
+set showmatch
+set showmode
+set splitbelow
+set splitright
 set t_Co=256
 set fillchars+=vert:\|
 
+let g:javascript_plugin_flow = 1
+" TRUE COLOR
+"Credit joshdick
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+
 colorscheme busybee
-filetype plugin indent on     " required!
+let g:airline_theme='one'
+
 syntax on
 syntax enable
 set laststatus=2
 set nu
-set runtimepath^=/Users/johannes\ boyne/.vim/bundle/node
+set runtimepath^=/Users/johannes_boyne/.vim/bundle/node
 set smartindent
 "set smarttab
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set mouse=a
-set encoding=utf-8
 let g:ctrlp_working_path_mode = 'rc'
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
@@ -236,45 +190,15 @@ let g:chromatica#libclang_path='/usr/local/opt/llvm/lib'
 let g:chromatica#enable_at_startup=1
 
 " Neovim
-" neocomplete like
-set completeopt+=noinsert
-" deoplete.nvim recommend
-set completeopt+=noselect
+set runtimepath+=$XDG_CONFIG_HOME/nvim/plugged/deoplete.nvim
+set completeopt+=noinsert,noselect
+set completeopt-=preview
 
-" Path to python interpreter for neovim
-set runtimepath+=/Users/johannes\ boyne/.vim/bundle/deoplete.nvim/
-let g:python3_host_prog  = 'python3'
-" Skip the check of neovim module
-call remote#host#RegisterPlugin('python3', '/Users/johannes\ boyne/.vim/bundle/deoplete.nvim/rplugin/python3/deoplete/deoplete.py', [
-      \ {'sync': 1, 'name': 'DeopleteInitializePython', 'type': 'command', 'opts': {}},
-     \ ])
+hi Pmenu    gui=NONE    guifg=#c5c8c6 guibg=#373b41
+hi PmenuSel gui=reverse guifg=#c5c8c6 guibg=#373b41
 
-let g:python3_host_skip_check = 1
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-" Run deoplete.nvim automatically
 let g:deoplete#enable_at_startup = 1
-" deoplete-go settings
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-let g:deoplete#sources#go#use_cache = 0
-let g:deoplete#sources#go#json_directory = ''
-
-" tagbar
-
-let g:tagbar_type_elixir = {
-    \ 'ctagstype' : 'elixir',
-    \ 'kinds' : [
-        \ 'f:functions',
-        \ 'functions:functions',
-        \ 'c:callbacks',
-        \ 'd:delegates',
-        \ 'e:exceptions',
-        \ 'i:implementations',
-        \ 'a:macros',
-        \ 'o:operators',
-        \ 'm:modules',
-        \ 'p:protocols',
-        \ 'r:records',
-        \ 't:test'
-    \ ]
-\ }
+set encoding=utf-8
