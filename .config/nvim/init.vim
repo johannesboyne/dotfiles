@@ -3,30 +3,36 @@
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/vim-easy-align'
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'fatih/vim-go', { 'tag': '*' }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug '~/my-prototype-plugin'
 Plug 'bling/vim-airline'
 Plug 'vim-scripts/BusyBee'
 Plug 'rakr/vim-one'
 Plug 'neomake/neomake'
 Plug 'b4b4r07/vim-hcl'
-Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-expand-region'
-Plug 'git://git.wincent.com/command-t.git'
 Plug 'git://github.com/moll/vim-node.git'
 Plug 'udalov/kotlin-vim'
 Plug 'cloudhead/neovim-fuzzy'
 Plug 'pangloss/vim-javascript'
 Plug 'aklt/plantuml-syntax'
+Plug 'leafgarland/typescript-vim'
+Plug 'tomlion/vim-solidity'
+Plug 'ianks/vim-tsx'
+Plug 'leafgarland/typescript-vim'
+Plug 'evanleck/vim-svelte'
+Plug 'rust-lang/rust.vim'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'iamcco/coc-flutter'
+Plug 'github/copilot.vim'
+"Plug 'racer-rust/vim-racer'
 
 " Initialize plugin system
 call plug#end()
@@ -82,11 +88,12 @@ set mouse=a
 let g:ctrlp_working_path_mode = 'rc'
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
+let g:go_debug=['shell-commands']
 let g:ackprg = 'ag --nogroup --nocolor --column --ignore node_modules'
 let g:ag_prg='ag -S --nocolor --nogroup --column --ignore node_modules'
 
 " Nodejs Linting
-let g:neomake_javascript_enabled_makers = ['eslint']
+" let g:neomake_javascript_enabled_makers = ['eslint']
 
 " neomake
 nmap <Leader><Space>o :lopen<CR>      " open location window
@@ -196,6 +203,22 @@ set completeopt-=preview
 
 hi Pmenu    gui=NONE    guifg=#c5c8c6 guibg=#373b41
 hi PmenuSel gui=reverse guifg=#c5c8c6 guibg=#373b41
+
+" go setup
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+" Go syntax highlighting
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 1
+
+" Auto formatting and importing
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports"
+
+autocmd FileType go setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
